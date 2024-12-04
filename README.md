@@ -1,9 +1,14 @@
-# 硬件诊断专家系统
+# Title
+Hardware diagnose - Expert System
 
-## 项目简介
-这是一个硬件故障诊断专家系统，基于规则推理，用户通过选择硬件故障的相关症状，系统将推导出可能的故障原因。该系统使用 Python 的 `tkinter` 库提供图形界面，结合预设的知识库和推理引擎，帮助用户快速诊断硬件问题。
+## Overview
+This is a hardware fault diagnosis expert system, based on rule reasoning, the user by 
+selecting the relevant symptoms of the hardware fault, the system will deduce the possible 
+fault cause. The system uses Python's 'tkinter' library to provide a graphical interface, 
+combined with a preset knowledge base and inference engine, to help users quickly diagnose 
+hardware problems.
 
-## 项目结构
+## Structure
 ExpertSys/  
 ├── knowledge_base.json  
 ├── knowledge_base.py  
@@ -12,75 +17,87 @@ ExpertSys/
 ├── README.md            # Project desription file  
 ├── LICENSE              # License File
 
-## 功能描述
-1. **条件选择**:   
-用户通过勾选硬件故障的症状条件，系统将基于这些条件推断可能的故障原因。
-2. **推理引擎**:  
-根据预设的规则，系统根据用户选择的条件进行推理，给出匹配度最高的结论。
-3. **结果展示**:  
-系统将推理结果以文本形式展示给用户。
+## Functions
+1. **Conditional Selection**:   
+The user checks the symptom conditions of the hardware failure, and the system infers the 
+possible causes of the failure based on these conditions.
+2. **Inference engine**:  
+According to the preset rules, the system reasoning based on the conditions selected by the 
+user gives the conclusion with the highest matching degree.
+3. **Result**:  
+The system presents the inference results to the user in a GUI interface.
 
-## 依赖
+## Dependencies
 - Python 3.x
-- Tkinter（用于图形界面）
-- json（用于加载知识库文件）
+- Tkinter（Used for graphical interfaces）
+- json（Used to load knowledge base files）
 
-## 使用方法
-### 1. 安装依赖
-1. **确保你已经安装了 Python 3.x，然后可以直接运行 Python 文件，因为 `tkinter` 是 Python 标准库的一部分，无需单独安装。**
-2. **下载并克隆如下仓库**:  
+## Usages
+### 1. Installing dependencies
+1. **Ensure you have already installed Python 3.x，then directly run `main.py` for `tkinter` 
+is a part of the library of Python and there's no need to install singly.**
+2. **Download and clone the following repository**:  
    ```bash
    git clone git@github.com:RamessesN/ExpertSystem.git
    ```
 
-### 2. 加载知识库
-知识库文件 `knowledge_base.json` 包含硬件故障诊断的规则和条件。示例如下：
+### 2. Loading the knowledge base
+Database file `knowledge_base.json` contains rules and conditions for hardware fault diagnosis.
+For instance：
 ```json
 {
   "conditions": [
-    "电脑无法启动",
-    "电源指示灯不亮",
-    "电源指示灯亮",
-    "电脑开机后无显示",
-    "风扇运转正常"
+    "The computer won't start",
+    "The power indicator isn't working",
+    "The power indicator is working",
+    "No display after the computer is turned on",
+    "The fan is working properly"
   ],
   "rules": [
     {
-      "if": ["电脑无法启动", "电源指示灯不亮"],
-      "then": "电源问题"
+      "if": ["The computer won't start", "The power indicator isn't working"],
+      "then": "Power Problem"
     },
     {
-      "if": ["电源指示灯亮", "电脑开机后无显示"],
-      "then": "主板问题"
+      "if": ["The power indicator is working", "No display after the computer is turned on"],
+      "then": "Motherboard Problem"
     },
     {
-      "if": ["电脑开机后无显示", "风扳运转正常"],
-      "then": "显卡问题"
+      "if": ["No display after the computer is turned on", "The fan is working properly"],
+      "then": "Graphics card problem"
     }
   ]
 }
 ```
 
-### 3. 运行程序
-运行 main.py 文件启动应用: python3 main.py
+### 3. Running
+Run main.py to start: ```python3 main.py```
 
-### 4. 使用界面
-1. **启动后，用户可以在界面中选择条件，例如“电源指示灯亮”或“电脑无法启动”。**
-2. **点击“推理”按钮后，系统将根据选择的条件推理并返回可能的故障结论。**
-3. **结果将显示在界面下方。**
+### 4. User Interface
+1. **After starting，Users are be allowed to select options in the interface like “The power 
+indicator isn't working” or “The computer won't start”.**
+2. **After clicking the "Reasoning" button, the system will reason and return a possible fault 
+conclusion based on the selected conditions.**
+3. **The results will be displayed at the bottom of the interface.**
 
-## 文件说明
+## File Description
 1. **knowledge_base.json**:  
-该文件包含硬件故障诊断的所有规则和条件。规则定义了在满足某些条件时系统应该推导出的故障类型。
+This file contains all rules and conditions for hardware fault diagnosis. Rules define the type 
+of faults that the system should derive when certain conditions are met.
 2. **knowledge_base.py**:  
-负责加载 knowledge_base.json 文件，并将其内容转化为 Python 对象供推理引擎使用。
+Responsible for loading the knowledge_base.json file and converting its contents into Python 
+objects for use by the inference engine.
 3. **inference_engine.py**:  
-包含推理引擎的逻辑，根据用户提供的症状条件进行推理，返回匹配的故障原因。
+Contains the logic of the inference engine, reasoning according to the symptom conditions provided 
+by the user, and returns the matching fault cause.
 4. **main.py**:  
-提供用户界面，允许用户选择故障症状并查看推理结果。使用 tkinter 库实现图形界面。
+User interfaces are provided that allow users to select fault symptoms and view inference results. 
+The tkinter library was used to implement the graphical interface.
 
-## 开发与贡献
-欢迎贡献代码或提出问题！如果有任何建议或需要改进的地方，请随时提出。
+## Development and Contribution
+Contribute code or ask questions! If you have any suggestions or areas for improvement, please feel 
+free to make them.
 
-## 许可证
-本项目采用 MIT 许可证，欢迎自由使用、修改和分发。
+## License
+This project is licensed under the MIT license and free use, modification, and distribution are 
+welcome.

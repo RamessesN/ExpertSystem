@@ -1,13 +1,13 @@
 import json as js
 
 def load_knowledge_base(file_path):
-    """加载知识库文件"""
+    """Load the knowledge base file"""
     try:
         with open(file_path, 'r') as file:
             return js.load(file)
     except FileNotFoundError:
-        print(f"错误: 无法找到文件 {file_path}")
+        print(f"Error: Cannot find file: {file_path}")
         return []
     except js.JSONDecodeError:
-        print(f"错误: 文件 {file_path} 格式错误")
+        print(f"Error: The format of file {file_path} is wrong")
         return []
